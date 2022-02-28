@@ -7,6 +7,7 @@ import com.uber.rib.core.Worker;
 import com.uber.rib.core.WorkerScopeProvider;
 import io.reactivex.Observable;
 import java.util.concurrent.TimeUnit;
+import timber.log.Timber;
 
 public class RootWorker implements Worker {
 
@@ -18,7 +19,7 @@ public class RootWorker implements Worker {
   }
 
   private void log(Long count) {
-    System.out.printf("WorkerCount:%s%n", count);
+    Timber.v("WorkerCount:%s%n", count);
   }
 
 

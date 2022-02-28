@@ -21,7 +21,12 @@ public interface RootScope extends Creatable<RootScope.Dependencies> {
     abstract RootInteractor.RootPresenter rootInteractor(RootView rootView);
 
     abstract RootRouter rootRouter();
+
     abstract RootWorker rootWorker();
+
+    abstract ProcessLifeCycleScopedWorker processLifeCycleScopedWorker();
+
+    abstract UnboundedScopedWorker unboundedScopedWorker();
 
     abstract ViewRouter<?, ?> viewRouter(RootRouter rootRouter);
 
