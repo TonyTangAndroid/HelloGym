@@ -3,6 +3,7 @@ package com.uber.rib.root;
 import static com.uber.autodispose.AutoDispose.autoDisposable;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import com.uber.autodispose.ScopeProvider;
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
@@ -43,7 +44,8 @@ class RootInteractor extends BasicInteractor<RootPresenter, RootRouter> {
   private void bindWorkers() {
     WorkerBinder.bind(this, rootWorker);
     unboundedScopedWorker.onStart(ScopeProvider.UNBOUND);
-    processLifeCycleScopedWorker.onStart(AndroidLifecycleScopeProvider.from(ProcessLifecycleOwner.get()));
+    processLifeCycleScopedWorker.onStart(AndroidLifecycleScopeProvider.from(ProcessLifecycleOwner.get(),
+        Event.ON_DESTROY));
   }
 
   private void observeStream() {
